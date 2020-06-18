@@ -1,12 +1,18 @@
 #!/bin/bash
 
-if ! grep "^#!" $1 &>/dev/null; then
-	cat >> $1 << EOF
+if [ -z "$1" ]; then
+	newfile=~/Desktop/scripts/newscript_`date +%m%d-%S`
+else
+	newfile=~/Desktop/scripts/$1
+fi
+
+if ! grep "^#!" $newfile &>/dev/null; then
+	cat >> $newfile << EOF
 #!/bin/bash
 # Author:
 # Date: `date +"%F %T"`
 # Description:
 EOF
 fi
-vim +5 $1
+vim +5 $newfile
 
