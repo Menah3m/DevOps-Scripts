@@ -10,7 +10,7 @@ import psutil
 
 EMAIL_USER = 'dawnwhite0@163.com'
 EMAIL_PASSWORD ='**********'
-RECIPIENTS = ['koubinnketsu@gmail.com']
+RECIPIENTS = ['568200065@qq.com']
 
 def render(tpl_path, **kwargs):
     path, filename = os.path.split(tpl_path)
