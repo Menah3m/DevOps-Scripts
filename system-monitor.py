@@ -9,7 +9,7 @@ import yagmail
 import psutil
 
 EMAIL_USER = 'dawnwhite0@163.com'
-EMAIL_PASSWORD ='163mail1234'
+EMAIL_PASSWORD ='**********'
 RECIPIENTS = ['koubinnketsu@gmail.com']
 
 def render(tpl_path, **kwargs):
