@@ -29,14 +29,14 @@ def bytes2human(n):
 
 def get_cpu_info():
     cpu_count = psutil.cpu_count()
-    cpu_percent = psutil.cpu_percent(interval=1)
+    cpu_percent = psutil.cpu_percent(interval=1)/100
     return dict(cpu_count=cpu_count, cpu_percent=cpu_percent)
 
 def get_memory_info():
     virtual_mem = psutil.virtual_memory()
 
     mem_total = bytes2human(virtual_mem.total)
-    mem_percent = virtual_mem.percent
+    mem_percent = virtual_mem.percent/100
     mem_free = bytes2human(virtual_mem.free + virtual_mem.buffers + virtual_mem.cached)
     mem_used = bytes2human(virtual_mem.total * virtual_mem.percent)
 
@@ -46,7 +46,7 @@ def get_disk_info():
     disk_usage = psutil.disk_usage('/')
 
     disk_total = bytes2human(disk_usage.total)
-    disk_percent = disk_usage.percent
+    disk_percent = disk_usage.percent/100
     disk_free = bytes2human(disk_usage.free)
     disk_used = bytes2human(disk_usage.used)
 
