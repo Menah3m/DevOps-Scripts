@@ -72,7 +72,7 @@ def main():
 
     content = render('monitor-info.html', **data)
 
-    with yagmail.SMTP(user=EMAIL_USER, password=EMAIL_PASSWORD, host='smtp.163.com', port=25) as yag:
+    with yagmail.SMTP(user=EMAIL_USER, password=EMAIL_PASSWORD, host='smtp.163.com') as yag:
         for recipient in RECIPIENTS:
             yag.send(recipient, "Monitor Information:".encode('utf-8'), content.encode('utf-8'))
 
