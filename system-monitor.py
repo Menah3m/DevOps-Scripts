@@ -38,7 +38,7 @@ def get_memory_info():
     mem_total = bytes2human(virtual_mem.total)
     mem_percent = virtual_mem.percent/100
     mem_free = bytes2human(virtual_mem.free + virtual_mem.buffers + virtual_mem.cached)
-    mem_used = bytes2human(virtual_mem.total * virtual_mem.percent)
+    mem_used = bytes2human(virtual_mem.total * virtual_mem.percent / 100)
 
     return dict(mem_total=mem_total, mem_percent=mem_percent, mem_free=mem_free, mem_used=mem_used)
 
