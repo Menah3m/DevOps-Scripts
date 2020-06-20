@@ -74,7 +74,7 @@ def main():
 
     with yagmail.SMTP(user=EMAIL_USER, password=EMAIL_PASSWORD, host='smtp.163.com') as yag:
         for recipient in RECIPIENTS:
-            yag.send(recipient, "Monitor Information of {}".format(hostname), content)
+            yag.send(recipient, "Monitor Information of [{}]".format(hostname), content)
 
 if __name__ == '__main__':
     main()
