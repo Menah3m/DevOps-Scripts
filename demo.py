@@ -21,11 +21,11 @@ def bytes2human(n):
     prefix = {}
     for i, s in enumerate(symbols):
         prefix[s] = 1 << (i + 1) * 10
-        for s in reversed(symbols):
-            if n >= prefix[s]:
-                value = float(n) / prefix[s]
-                return '%.1f%s' % (value, s)
-        return "%sB" % n
+    for s in reversed(symbols):
+        if n >= prefix[s]:
+            value = float(n) / prefix[s]
+            return '%.1f%s' % (value, s)
+    return "%sB" % n
 
 def get_cpu_info():
     cpu_count = psutil.cpu_count()
@@ -33,7 +33,7 @@ def get_cpu_info():
     return dict(cpu_count=cpu_count, cpu_percent=cpu_percent)
 
 def get_memory_info():
-    virtual_mem = pstuil.virtual_memory()
+    virtual_mem = psutil.virtual_memory()
 
     mem_total = bytes2human(virtual_mem.total)
     mem_percent = virtual_mem.percent
