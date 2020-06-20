@@ -9,7 +9,7 @@ import yagmail
 import psutil
 
 EMAIL_USER = 'dawnwhite0@163.com'
-EMAIL_PASSWORD ='**********'
+EMAIL_PASSWORD ='****'
 RECIPIENTS = ['568200065@qq.com']
 
 def render(tpl_path, **kwargs):
@@ -74,7 +74,7 @@ def main():
 
     with yagmail.SMTP(user=EMAIL_USER, password=EMAIL_PASSWORD, host='smtp.163.com') as yag:
         for recipient in RECIPIENTS:
-            yag.send(recipient, "Monitor Information:".encode('utf-8'), content.encode('utf-8'))
+            yag.send(recipient, "Monitor Information of {}".format(hostname), content)
 
 if __name__ == '__main__':
     main()
