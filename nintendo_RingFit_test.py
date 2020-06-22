@@ -3,9 +3,9 @@ import yagmail
 from lxml import etree
 import json
 
-EMAIL_USER = 'dawnwhite0@163.com'
-EMAIL_PASSWORD ='HAARQDVWHZIEPANJ'
-RECIPIENTS = ['568200065@qq.com','554394861@qq.com','kangminjie_ke2018@outlook.com']
+EMAIL_USER = '' # 发通知的邮箱
+EMAIL_PASSWORD ='' #授权码
+RECIPIENTS = []  #收件邮箱列表
 
 url = 'https://store.nintendo.co.jp/item/HAC_Q_AL3PA.html?utm_source=www.nintendo.co.jp&utm_medium=referral'
 headers = {
