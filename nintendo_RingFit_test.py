@@ -1,11 +1,16 @@
+"""
+查看 健身环大冒险 库存情况脚本
+
+"""
+
 import requests
 import yagmail
 from lxml import etree
 import json
 
-EMAIL_USER = '' # 发通知的邮箱
+EMAIL_USER = '' # 发件人的邮箱地址
 EMAIL_PASSWORD ='' #授权码
-RECIPIENTS = []  #收件邮箱列表
+RECIPIENTS = []  #收件人的邮箱列表
 
 url = 'https://store.nintendo.co.jp/item/HAC_Q_AL3PA.html?utm_source=www.nintendo.co.jp&utm_medium=referral'
 headers = {
@@ -15,10 +20,12 @@ headers = {
 
 
 
-r = requests.get(url=url, headers=headers).text
+r = requests.get(url=url, headers=headers).content
+
 html = etree.HTML(r)
 result = html.xpath('//*[@id="itemDetail"]/div[2]/div[5]/form/div[2]/div/div/p/text()')
-if result[0] != '品切れ':
+
+if result[0] == '品切れ':
     with yagmail.SMTP(user=EMAIL_USER, password=EMAIL_PASSWORD, host='smtp.163.com') as yag:
         content = """
             健身大冒险现在的库存状况是：[{}]。
@@ -30,7 +37,3 @@ if result[0] != '品切れ':
         for recipient in RECIPIENTS:
             yag.send(recipient,subject="健身大冒险库存更新了！", contents=content)
 
-
-# result = r.xpath('//*[@id="itemDetail"]/div[2]/div[5]/form/div[2]/div/div/p')
-
-# print(result)
